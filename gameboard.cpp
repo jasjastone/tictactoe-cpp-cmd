@@ -1,4 +1,4 @@
-/*Project author @jasjastone
+/*Project author @jasjastone*/
 
 #include<iostream>
 using namespace std;
@@ -11,7 +11,7 @@ class GameBoardPosition{
 			this->row = row;
 			this->column = column;
 		}
-	
+
 };
 
 class GameBoard{
@@ -29,13 +29,13 @@ class GameBoard{
 			for (int i = 0; i<this->rowSize; i++)
 		    {
 		      for (int j = 0; j<this->columnSize; j++){
-		      this->board [i][j] = ' ';	
+		      this->board [i][j] = ' ';
 			  }
 		    }
 			cout<<"\nHere is our game format\n";
 			this->printGameBoard();
 			}
-	
+
 //	place the token to the board
 	bool placeToken(GameBoardPosition* pos, char token){
 		if(pos->row >= 0 && pos->row < this->rowSize && this->columnSize >= 0 && pos->column <= this->columnSize && this->board[pos->row][pos->column] == ' '){
@@ -53,7 +53,7 @@ class GameBoard{
     else
         return false;
 	}
-	
+
 //	check if the board is full no more move to play
 	bool isFull(){
 		bool isfull = true;
@@ -62,12 +62,12 @@ class GameBoard{
 		      for (int j = 0; j<this->columnSize; j++){
 		      if(this->board [i][j] == ' ' ){
 		      	isfull = false;
-			  }	
+			  }
 			  }
 		    }
 		return isfull;
 	}
-	
+
 //	check if there is a winner
 	bool checkWinner(GameBoardPosition* pos, char token)
 	{
@@ -77,7 +77,7 @@ class GameBoard{
 		}
 		return false;
 	}
-	
+
 //	check if the player has won horizontally
 	bool horizontalWin(GameBoardPosition* pos, char token){
 		char tokenBoard = this->board[pos->row][pos->column];
@@ -90,7 +90,7 @@ class GameBoard{
 	            	return true;
 				}
 				consecutive++;
-	                
+
 	        }
 	        else
 	            {
@@ -104,15 +104,15 @@ class GameBoard{
 				if (consecutive == 4)
 	                return true;
 	            consecutive++;
-	            
-	            
+
+
 	        }
 	        else
 	            break;
 	    }
 	    return false;
 	}
-	
+
 //	check if the player has won vertically
 	bool verticalWin(GameBoardPosition* pos,char token){
     int consecutive = 1;
@@ -135,17 +135,17 @@ class GameBoard{
         else
             break;
     }
-    
+
     return false;
-    
+
 	}
-	
+
 //	check if the player has won diagonally
 	bool diagonalWin (GameBoardPosition* pos, char token){
     int consecutive = 1;
     for (int i = pos->row, j = pos->column; i >= 0 && j < this->columnSize; i--, j++){
         if (board[i][j] == token){
-            
+
             if (consecutive == 4)
                 return true;
             consecutive++;
@@ -188,7 +188,7 @@ class GameBoard{
 	char getToken(GameBoardPosition* pos){
 		return this->board[pos->row][pos->column];
 	}
-	
+
 //	print the current state of the gameboard
 	void printGameBoard(){
 	for(int i = 0; i < this->columnSize;i++){
@@ -196,7 +196,7 @@ class GameBoard{
 			cout << " |"<<i;
 		}
 		else{
-		cout << "|"<<i;	
+		cout << "|"<<i;
 		}
 	}
 	cout<<endl;
@@ -208,7 +208,7 @@ class GameBoard{
         cout << endl;
     }
 	}
-	
+
 //	get user input and assign a player tokens
 	void input (char choice){
     if(choice == 'Y'||choice=='y'){
@@ -218,7 +218,7 @@ class GameBoard{
 				if(this->player1 == 'X'||this->player1 == 'x'){
 					this->player2 ='O';
 					cout <<"\nPlayer 2, Your token is, "<< this->player2 << endl;
-					
+
 				}
 				else if(this->player1 == 'O'||this->player1 == 'o'){
 					this->player2 = 'X';
@@ -228,12 +228,12 @@ class GameBoard{
 				else{
 					cout << "The token either X or O, Try again\n" << endl;
                 }
-            }while (this->player1 != 'X' &&this->player1 != 'x' && this->player1 != 'O' && this->player1 != 'o');    
+            }while (this->player1 != 'X' &&this->player1 != 'x' && this->player1 != 'O' && this->player1 != 'o');
         }
 
     else if (choice == 'N'||choice=='n'){
     		cout << "Bye Bye!";
-    		
+
 	}
 }
 
@@ -254,7 +254,7 @@ class GameBoard{
 				cin >> positions->row;
                 cout<<"\n Now Enter Column ";
 				cin>>positions->column;
-				
+
                 if (this->placeToken(positions,this->player1))
                     player1Turn = !player1Turn;
                 player1win = this->checkWinner(positions,this->player1);
@@ -266,14 +266,14 @@ class GameBoard{
 				cin >> positions->row;
                 cout<<"\n Now Enter Column ";
 				cin>>positions->column;
-				
+
                 if (this->placeToken(positions,this->player2)){
                 	player1Turn = !player1Turn;
 				}
                 player2win = this->checkWinner(positions, this->player2);
             }
             gameOver = this->isFull();
-            
+
             this->printGameBoard();
 
             if(player1win){
@@ -304,7 +304,7 @@ void resetGameBoard(){
 	for (int i = 0; i<this->rowSize; i++)
 		    {
 		      for (int j = 0; j<this->columnSize; j++){
-		      this->board [i][j] = ' ';	
+		      this->board [i][j] = ' ';
 			  }
 		    }
 }
