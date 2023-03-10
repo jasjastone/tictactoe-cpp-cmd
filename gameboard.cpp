@@ -1,11 +1,4 @@
-/*Project
-1. Abdul-aziz Ngozi 22031613037 - Part time
-2. Diocles simon    22031613002 - Full time
-3. Hashiri Hussein  22031613052 - Part time
-4. Joel Uvambe  22031613073 - Full time
-5. Baraka Elias  22031613071 - Full time
-EAE
-*/
+/*Project author @jasjastone
 
 #include<iostream>
 using namespace std;
